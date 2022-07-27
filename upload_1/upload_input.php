@@ -10,8 +10,8 @@ $html = <<< HEREDOC
 <body>
 <h1>檔案上傳</h1>
 <form name="form1" method="post" action="upload_save.php" enctype="multipart/form-data">
-  檔案：<input type="file" name="file"><br>
-  <input type="submit" value="上傳">
+    檔案：<input type="file" name="file"><br>
+    <input type="submit" value="上傳">
 </form>
 </body>
 </html>

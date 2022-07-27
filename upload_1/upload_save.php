@@ -1,35 +1,32 @@
 <?php
-$a_file = $_FILES["file"];  // 上傳的檔案內容
+$a_file = $_FILES['file'];  // 上傳的檔案內容
 
-$path = "file/";  // 指定存檔的資料夾
+$path = '../file/';  // 指定存檔的資料夾
 
 // 判斷能否存入，若無則建立新的資料夾
-if(!is_dir($path))
-{
-   mkdir($path);
+if(!is_dir($path)) {
+    mkdir($path);
 }
 
 // 上傳檔案處理
 $msg = '';
-if($a_file["size"]>0)
-{
-   $save_filename = $path . $a_file["name"];  // 保留原來檔名
-   $save_filename = iconv("utf-8", "big5", $save_filename);   // 處理中文檔名時需轉換
+if($a_file['size']>0) {
+    $save_filename = $path . $a_file['name'];  // 保留原來檔名
+    $save_filename = iconv('utf-8', 'big5', $save_filename);   // 處理中文檔名時需轉換
 
-   move_uploaded_file($a_file["tmp_name"], $save_filename);
+    move_uploaded_file($a_file['tmp_name'], $save_filename);
 
-   $msg .= '<p>已成功上傳檔案：' . $a_file["name"] . '</p>';
-   $msg .= '<BLOCKQUOTE>';
-   $msg .= '儲存檔名：' . $save_filename      . '<BR>';
-   $msg .= '原始檔名：' . $a_file["name"]     . '<BR>';
-   $msg .= '檔案大小：' . $a_file["size"]     . '<BR>';
-   $msg .= '檔案類型：' . $a_file["type"]     . '<BR>';
-   $msg .= '暫存檔案：' . $a_file["tmp_name"] . '<BR>';
-   $msg .= '</BLOCKQUOTE>';
+    $msg .= '<p>已成功上傳檔案：' . $a_file['name'] . '</p>';
+    $msg .= '<blockquote>';
+    $msg .= '儲存檔名：' . $save_filename      . '<br>';
+    $msg .= '原始檔名：' . $a_file['name']     . '<br>';
+    $msg .= '檔案大小：' . $a_file['size']     . '<br>';
+    $msg .= '檔案類型：' . $a_file['type']     . '<br>';
+    $msg .= '暫存檔案：' . $a_file['tmp_name'] . '<br>';
+    $msg .= '</blockquote>';
 }
-else
-{
-   $msg .= '檔案上傳不成功！';
+else {
+    $msg .= '檔案上傳不成功！';
 }
 
 
