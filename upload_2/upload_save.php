@@ -35,7 +35,8 @@ $file_error = $a_file['error'];
 
 // 指定儲存的檔名
 $save_filename = $path . $file_name;
-$save_filename = iconv('utf-8', 'big5', $save_filename);   // 處理中文檔名時需轉換
+//$save_filename = iconv('utf-8', 'big5', $save_filename);   // 處理中文檔名時需轉換
+$save_filename = mb_convert_encoding($string,'big5', 'utf-8');   // 改用 mb_convert_encoding() 較佳
 
 // 上傳檔案處理
 $msg = '';
@@ -71,15 +72,6 @@ if($file_error==UPLOAD_ERR_OK && $file_size>0) {  // 先確認有檔案傳上來
     if($check_ok) {
         if(@move_uploaded_file($file_tmp, $save_filename)) {
             $msg .= '檔案上傳成功：' . $file_name;
-            /*
-            $msg .= '<blockquote>';
-            $msg .= '儲存檔名：' . $save_filename . '<br>';
-            $msg .= '原始檔名：' . $file_name . '<br>';
-            $msg .= '檔案大小：' . $file_size . '<br>';
-            $msg .= '檔案類型：' . $file_type . '<br>';
-            $msg .= '暫存檔案：' . $file_tmp . '<br>';
-            $msg .= '</blockquote>';
-        */
         }
         else {
             $msg .= '不明的原因，檔案上傳失敗。<br>';
