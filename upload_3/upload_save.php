@@ -15,7 +15,7 @@ for($i=0; $i<$total; $i++) {
     if(isset($a_file['size'][$i]) && $a_file['size'][$i]>0) {
         $save_filename = $path . $a_file['name'][$i];  // 保留原來檔名
 		//$save_filename = iconv('utf-8', 'big5', $save_filename);   // 處理中文檔名時需轉換
-		$save_filename = mb_convert_encoding($string, 'big5', 'auto');   // 改用 mb_convert_encoding() 較佳
+		//$save_filename = mb_convert_encoding($string, 'big5', 'auto');   // 改用 mb_convert_encoding() 較佳
         
         if(@move_uploaded_file($a_file['tmp_name'][$i], $save_filename)) {
             $msg .= '<br>已成功上傳檔案：' . $save_filename;

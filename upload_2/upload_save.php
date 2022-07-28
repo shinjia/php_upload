@@ -36,7 +36,7 @@ $file_error = $a_file['error'];
 // 指定儲存的檔名
 $save_filename = $path . $file_name;
 //$save_filename = iconv('utf-8', 'big5', $save_filename);   // 處理中文檔名時需轉換
-$save_filename = mb_convert_encoding($string,'big5', 'utf-8');   // 改用 mb_convert_encoding() 較佳
+//$save_filename = mb_convert_encoding($string,'big5', 'utf-8');   // 改用 mb_convert_encoding() 較佳
 
 // 上傳檔案處理
 $msg = '';
